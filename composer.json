@@ -1,0 +1,18 @@
+{
+	"name": "ytnuk/blog",
+	"require": {
+		"ytnuk/web": "dev-master",
+		"kdyby/translation": "dev-master",
+		"nette/di": "dev-master",
+		"ytnuk/config": "dev-master",
+		"ytnuk/orm": "dev-master",
+		"ytnuk/form": "dev-master",
+		"ytnuk/link": "dev-master",
+		"ytnuk/translation": "dev-master"
+	},
+	"autoload": {
+		"psr-4": {
+			"Ytnuk\\": "src/"
+		}
+	}
+}
