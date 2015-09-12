@@ -21,17 +21,11 @@ final class Entity
 	 */
 	private $postRepository;
 
-	/**
-	 * @return Nextras\Orm\Collection\ICollection|Ytnuk\Blog\Post\Entity[]
-	 */
-	public function getterPosts()
+	public function getterPosts() : Nextras\Orm\Collection\ICollection
 	{
 		return $this->postRepository->findBy(['this->categoryNodes->category' => $this->id]);
 	}
 
-	/**
-	 * @param Ytnuk\Blog\Post\Repository $repository
-	 */
 	public function injectPostRepository(Ytnuk\Blog\Post\Repository $repository)
 	{
 		$this->postRepository = $repository;

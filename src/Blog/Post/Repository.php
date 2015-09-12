@@ -4,19 +4,11 @@ namespace Ytnuk\Blog\Post;
 use Nextras;
 use Ytnuk;
 
-/**
- * Class Repository
- *
- * @package Ytnuk\Blog
- */
 final class Repository
 	extends Ytnuk\Orm\Repository
 {
 
-	/**
-	 * @inheritdoc
-	 */
-	public function findAll()
+	public function findAll() : Nextras\Orm\Collection\ICollection
 	{
 		return parent::findAll()->orderBy(
 			current($this->getEntityMetadata()->getPrimaryKey()),
