@@ -24,21 +24,35 @@ final class Control
 	private $gridControl;
 
 	/**
+	 * @var Ytnuk\Blog\Post\Control\Factory
+	 */
+	private $postControl;
+
+	/**
+	 * @var Ytnuk\Blog\Post\Repository
+	 */
+	private $postRepository;
+
+	/**
 	 * @var Repository
 	 */
 	private $repository;
 
 	public function __construct(
 		Entity $category,
+		Repository $repository,
 		Form\Control\Factory $formControl,
 		Ytnuk\Orm\Grid\Control\Factory $gridControl,
-		Repository $repository
+		Ytnuk\Blog\Post\Control\Factory $postControl,
+		Ytnuk\Blog\Post\Repository $postRepository
 	) {
 		parent::__construct($category);
 		$this->category = $category;
+		$this->repository = $repository;
 		$this->formControl = $formControl;
 		$this->gridControl = $gridControl;
-		$this->repository = $repository;
+		$this->postControl = $postControl;
+		$this->postRepository = $postRepository;
 	}
 
 	protected function startup() : array
@@ -51,7 +65,7 @@ final class Control
 	protected function renderView() : array
 	{
 		return [
-			'posts' => $this[Ytnuk\Orm\Pagination\Control::class]['posts']->getCollection(),
+			'posts' => $this[Ytnuk\Orm\Pagination\Control::class]['posts'],
 		];
 	}
 
@@ -75,5 +89,19 @@ final class Control
 	protected function createComponentYtnukGridControl() : Ytnuk\Orm\Grid\Control
 	{
 		return $this->gridControl->create($this->repository);
+	}
+
+	protected function createComponentYtnukBlogPostControl() : Nette\Application\UI\Multiplier
+	{
+		return new Nette\Application\UI\Multiplier(
+			function ($id) : Ytnuk\Blog\Post\Control {
+				$post = $this->postRepository->getById($id);
+				if ($post instanceof Ytnuk\Blog\Post\Entity) {
+					return $this->postControl->create($post);
+				}
+
+				return NULL;
+			}
+		);
 	}
 }

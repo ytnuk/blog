@@ -55,6 +55,11 @@ final class Control
 					$this->post,
 				];
 			},
+			'media' => function () {
+				return [
+					$this->post,
+				];
+			},
 		] + parent::getViews();
 	}
 
