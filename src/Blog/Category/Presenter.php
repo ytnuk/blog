@@ -48,7 +48,17 @@ final class Presenter
 
 	public function renderEdit()
 	{
-		$this[Ytnuk\Web\Control::class][Ytnuk\Menu\Control::class][] = 'blog.category.presenter.action.edit';
+		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = 'blog.category.presenter.action.edit';
+	}
+
+	protected function createComponentBlog() : Ytnuk\Blog\Control
+	{
+		$blog = parent::createComponentBlog();
+		if ($this->category) {
+			$blog->setCategory($this->category);
+		}
+
+		return $blog;
 	}
 
 	public function redrawControl(
@@ -60,12 +70,7 @@ final class Presenter
 			$redraw
 		);
 		if ($this->category) {
-			$this[Control::class]->redrawControl();
+			$this[Ytnuk\Blog\Control::NAME][Control::NAME]->redrawControl();
 		}
-	}
-
-	protected function createComponentYtnukBlogCategoryControl() : Control
-	{
-		return $this->control->create($this->category ? : new Entity);
 	}
 }

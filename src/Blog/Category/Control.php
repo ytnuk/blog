@@ -8,6 +8,8 @@ final class Control
 	extends Ytnuk\Orm\Control
 {
 
+	const NAME = 'category';
+
 	/**
 	 * @var Entity
 	 */
@@ -65,7 +67,7 @@ final class Control
 	protected function renderView() : array
 	{
 		return [
-			'posts' => $this[Ytnuk\Orm\Pagination\Control::class]['posts'],
+			'posts' => $this[Ytnuk\Orm\Pagination\Control::NAME]['posts'],
 		];
 	}
 
@@ -75,23 +77,23 @@ final class Control
 			'view' => function () {
 				return [
 					$this->category,
-					$this[Ytnuk\Orm\Pagination\Control::class]['posts'],
+					$this[Ytnuk\Orm\Pagination\Control::NAME]['posts'],
 				];
 			},
 		] + parent::getViews();
 	}
 
-	protected function createComponentYtnukOrmFormControl() : Form\Control
+	protected function createComponentForm() : Form\Control
 	{
 		return $this->formControl->create($this->category);
 	}
 
-	protected function createComponentYtnukGridControl() : Ytnuk\Orm\Grid\Control
+	protected function createComponentGrid() : Ytnuk\Orm\Grid\Control
 	{
 		return $this->gridControl->create($this->repository);
 	}
 
-	protected function createComponentYtnukBlogPostControl() : Nette\Application\UI\Multiplier
+	protected function createComponentPost() : Nette\Application\UI\Multiplier
 	{
 		return new Nette\Application\UI\Multiplier(
 			function ($id) : Ytnuk\Blog\Post\Control {

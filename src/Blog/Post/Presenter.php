@@ -38,9 +38,9 @@ final class Presenter
 			$this->error();
 		}
 		if ($category = $this->post->category) {
-			$this[Ytnuk\Web\Control::class][Ytnuk\Menu\Control::class][] = $category->menu;
+			$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = $category->menu;
 		}
-		$this[Ytnuk\Web\Control::class][Ytnuk\Menu\Control::class][] = $this->post->title;
+		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = $this->post->title;
 	}
 
 	public function actionEdit(int $id)
@@ -52,7 +52,17 @@ final class Presenter
 
 	public function renderEdit()
 	{
-		$this[Ytnuk\Web\Control::class][Ytnuk\Menu\Control::class][] = 'blog.post.presenter.action.edit';
+		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = 'blog.post.presenter.action.edit';
+	}
+
+	protected function createComponentBlog() : Ytnuk\Blog\Control
+	{
+		$blog = parent::createComponentBlog();
+		if ($this->post) {
+			$blog->setPost($this->post);
+		}
+
+		return $blog;
 	}
 
 	public function redrawControl(
@@ -64,12 +74,7 @@ final class Presenter
 			$redraw
 		);
 		if ($this->post) {
-			$this[Control::class]->redrawControl();
+			$this[Ytnuk\Blog\Control::NAME][Control::NAME]->redrawControl();
 		}
-	}
-
-	protected function createComponentYtnukBlogPostControl() : Control
-	{
-		return $this->control->create($this->post ? : new Entity);
 	}
 }
