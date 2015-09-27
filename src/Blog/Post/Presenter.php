@@ -21,7 +21,7 @@ final class Presenter
 	/**
 	 * @var Entity
 	 */
-	private $post;
+	private $entity;
 
 	public function __construct(
 		Repository $repository,
@@ -34,18 +34,18 @@ final class Presenter
 
 	public function actionView(int $id)
 	{
-		if ( ! $this->post = $this->repository->getById($id)) {
+		if ( ! $this->entity = $this->repository->getById($id)) {
 			$this->error();
 		}
-		if ($category = $this->post->category) {
+		if ($category = $this->entity->category) {
 			$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = $category->menu;
 		}
-		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = $this->post->title;
+		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = $this->entity->title;
 	}
 
 	public function actionEdit(int $id)
 	{
-		if ( ! $this->post = $this->repository->getById($id)) {
+		if ( ! $this->entity = $this->repository->getById($id)) {
 			$this->error();
 		}
 	}
@@ -58,8 +58,8 @@ final class Presenter
 	protected function createComponentBlog() : Ytnuk\Blog\Control
 	{
 		$blog = parent::createComponentBlog();
-		if ($this->post) {
-			$blog->setPost($this->post);
+		if ($this->entity) {
+			$blog->setPost($this->entity);
 		}
 
 		return $blog;
@@ -73,7 +73,7 @@ final class Presenter
 			$snippet,
 			$redraw
 		);
-		if ($this->post) {
+		if ($this->entity) {
 			$this[Ytnuk\Blog\Control::NAME][Control::NAME]->redrawControl();
 		}
 	}

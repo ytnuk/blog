@@ -97,9 +97,9 @@ final class Control
 	{
 		return new Nette\Application\UI\Multiplier(
 			function ($id) : Ytnuk\Blog\Post\Control {
-				$post = $this->postRepository->getById($id);
-				if ($post instanceof Ytnuk\Blog\Post\Entity) {
-					return $this->postControl->create($post);
+				$entity = $this->postRepository->getById($id);
+				if ($entity instanceof Ytnuk\Blog\Post\Entity) {
+					return $this->postControl->create($entity);
 				}
 
 				return NULL;
