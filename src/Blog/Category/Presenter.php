@@ -51,12 +51,6 @@ final class Presenter
 		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = 'blog.category.presenter.action.edit';
 	}
 
-	protected function beforeRender()
-	{
-		parent::beforeRender();
-		$this[Ytnuk\Blog\Control::NAME][Control::NAME]->redrawControl();
-	}
-
 	protected function createComponentBlog() : Ytnuk\Blog\Control
 	{
 		$blog = parent::createComponentBlog();
