@@ -7,7 +7,8 @@
 		"ytnuk/orm": "dev-master",
 		"ytnuk/form": "dev-master",
 		"ytnuk/link": "dev-master",
-		"ytnuk/translation": "dev-master"
+		"ytnuk/translation": "dev-master",
+		"ytnuk/menu": "dev-master"
 	},
 	"autoload": {
 		"psr-4": {
