@@ -2,7 +2,7 @@
 	"name": "ytnuk/blog",
 	"extra": {
 		"extensions": {
-			"ytnuk/blog": "Ytnuk\\Blog\\Extension"
+			"ytnuk_blog": "Ytnuk\\Blog\\Extension"
 		}
 	},
 	"require": {
