@@ -1,5 +1,10 @@
 {
 	"name": "ytnuk/blog",
+	"extra": {
+		"extensions": {
+			"ytnuk/blog": "Ytnuk\\Blog\\Extension"
+		}
+	},
 	"require": {
 		"ytnuk/web": "dev-master",
 		"kdyby/translation": "dev-master",
