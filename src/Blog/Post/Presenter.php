@@ -38,9 +38,9 @@ final class Presenter
 			$this->error();
 		}
 		if ($category = $this->entity->category) {
-			$this['web-menu'][] = $category->menu;
+			$this['web']['menu'][] = $category->menu;
 		}
-		$this['web-menu'][] = $this->entity->title;
+		$this['web']['menu'][] = $this->entity->title;
 	}
 
 	public function actionEdit(int $id)
@@ -52,7 +52,7 @@ final class Presenter
 
 	public function renderEdit()
 	{
-		$this['web-menu'][] = 'blog.post.presenter.action.edit';
+		$this['web']['menu'][] = 'blog.post.presenter.action.edit';
 	}
 
 	protected function createComponentBlog() : Ytnuk\Blog\Control
