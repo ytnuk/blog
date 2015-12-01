@@ -59,7 +59,7 @@ final class Presenter
 	{
 		$blog = parent::createComponentBlog();
 		if ($this->entity) {
-			$blog['post']->setEntity($this->entity);
+			$blog->setPost($this->entity);
 		}
 
 		return $blog;

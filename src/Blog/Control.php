@@ -37,6 +37,18 @@ final class Control
 		$this->postControl = $postControl;
 	}
 
+	public function setCategory(Ytnuk\Blog\Category\Entity $category)
+	{
+		$this->category = $category;
+		unset($this['category']);
+	}
+
+	public function setPost(Ytnuk\Blog\Post\Entity $post)
+	{
+		$this->post = $post;
+		unset($this['post']);
+	}
+
 	protected function createComponentCategory() : Category\Control
 	{
 		return $this->categoryControl->create($this->category ? : new Category\Entity);
