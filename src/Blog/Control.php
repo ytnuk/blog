@@ -37,18 +37,6 @@ final class Control
 		$this->postControl = $postControl;
 	}
 
-	public function setCategory(Category\Entity $entity)
-	{
-		$this->category = $entity;
-		unset($this['category']);
-	}
-
-	public function setPost(Post\Entity $entity)
-	{
-		$this->post = $entity;
-		unset($this['post']);
-	}
-
 	protected function createComponentCategory() : Category\Control
 	{
 		return $this->categoryControl->create($this->category ? : new Category\Entity);
