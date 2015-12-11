@@ -55,7 +55,7 @@ final class Control
 					$this->post,
 				];
 			},
-			'media' => function () {
+			'card' => function () {
 				return [
 					$this->post,
 				];

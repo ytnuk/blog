@@ -1,0 +1,64 @@
+<article class="card">
+	<header class="card-header">
+		<h2>{$post->title}</h2>
+	</header>
+	<div class="card-block row">
+		<div class="col-sm-2">
+			<a n:href="$post->link">
+				<img class="img-fluid img-rounded img-thumbnail" src="https://unsplash.it/512?random={=rand()}">
+			</a>
+		</div>
+		<div class="col-sm-10">
+			<p class="card-text lead">
+				{if $description = $post->description}
+					{$description}
+				{else}
+					{$post->content|striptags|strip|noescape|truncate:256}
+				{/if}
+			</p>
+			<a class="btn" n:href="$post->link">Read more</a>
+		</div>
+	</div>
+	<footer class="card-footer">
+		<ul class="list-inline">
+			<li class="list-inline-item">
+				<i class="fa fa-user"></i>
+				Vít Kutný
+			</li>
+			<li class="list-inline-item">
+				<i class="fa fa-calendar"></i>
+				{=new DateTime|date}
+			</li>
+			<li class="list-inline-item">
+				<i class="fa fa-comment"></i>
+				0
+			</li>
+			<li class="list-inline-item">
+				<i class="fa fa-share"></i>
+				0
+			</li>
+			<li class="list-inline-item">
+				<i class="fa fa-tags"></i>
+				Tags:
+				<span class="label label-default">
+					<i class="fa fa-tag"></i> Default
+				</span>
+                <span class="label label-primary">
+					<i class="fa fa-tag"></i> Primary
+				</span>
+                <span class="label label-success">
+					<i class="fa fa-tag"></i> Success
+				</span>
+                <span class="label label-info">
+					<i class="fa fa-tag"></i> Info
+				</span>
+                <span class="label label-warning">
+					<i class="fa fa-tag"></i> Warning
+				</span>
+                <span class="label label-danger">
+					<i class="fa fa-tag"></i> Danger
+				</span>
+			</li>
+		</ul>
+	</footer>
+</article>
