@@ -55,7 +55,7 @@ final class Control
 					$this->post,
 				];
 			},
-			'card' => function () {
+			'item' => function () {
 				return [
 					$this->post,
 				];

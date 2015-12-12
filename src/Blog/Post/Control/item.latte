@@ -1,3 +1,6 @@
+<h2>
+	<a n:href="$post->link">{$post->title}</a>
+</h2>
 <ul class="list-inline text-muted">
 	<li class="list-inline-item">
 		<i class="fa fa-calendar"></i>
@@ -19,9 +22,10 @@
 	</li>
 </ul>
 <hr>
-<p class="lead" n:ifcontent>
-	{$post->description}
-</p>
-<p>
-	{$post->content|noescape}
+<p class="lead">
+	{if $description = $post->description}
+		{$description}
+	{else}
+		{$post->content|striptags|strip|noescape|truncate:256}
+	{/if}
 </p>

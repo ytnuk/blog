@@ -1,9 +1,9 @@
 <p class="lead" n:if="$category->description">
 	{$category->description}
 </p>
-<ul class="media-list">
+<ul class="list-unstyled">
 	<li n:foreach="$posts as $post">
-		{control post-$post->id:card}
+		{control post-$post->id:item}
 	</li>
 </ul>
 {control pagination-posts}
