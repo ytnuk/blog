@@ -60,6 +60,11 @@ final class Control
 					$this->post,
 				];
 			},
+			'info' => function () {
+				return [
+					$this->post,
+				];
+			},
 		] + parent::getViews();
 	}
 
