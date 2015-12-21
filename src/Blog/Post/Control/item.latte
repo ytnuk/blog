@@ -1,7 +1,9 @@
 <h2>
 	<a n:href="$post->link">{$post->title}</a>
 </h2>
-{control $control:info}
+{* {control $control:info} TODO: not working on last two items in ajax requests *}
+{include info.latte}
+{* TODO: after fixing above bug, maybe use include for this case? *}
 <hr>
 <p class="lead">
 	{if $description = $post->description}

@@ -4,6 +4,7 @@ namespace Ytnuk\Blog\Category;
 use Nette;
 use Ytnuk;
 
+//TODO: create Ytnuk\Blog\Category\Feed\Xml\Presenter, using abstract Ytnuk\Atom\Xml\Presenter, to be able to reuse for Ytnuk\Blog\Post\Feed\Xml\Presenter (eg for comments), Ytnuk\Shop\Categor\Feed\Xml\Presenter
 final class Presenter
 	extends Ytnuk\Blog\Application\Presenter
 {
