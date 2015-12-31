@@ -2,14 +2,6 @@ category:
 	presenter:
 		action:
 			edit: Edit category
-	form:
-		container:
-			property:
-				postNodes:
-					group: Posts
-					action:
-						add: Add post
-						delete: Delete post
 	description:
 		form:
 			container:

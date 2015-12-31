@@ -2,14 +2,6 @@ category:
 	presenter:
 		action:
 			edit: Upravit kategorii
-	form:
-		container:
-			property:
-				postNodes:
-					group: Příspěvky
-					action:
-						add: Přidat příspěvek
-						delete: Odebrat příspěvek
 	description:
 		form:
 			container:
