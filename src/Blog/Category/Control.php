@@ -93,15 +93,13 @@ final class Control
 
 	protected function createComponentPost() : Nette\Application\UI\Multiplier
 	{
-		return new Nette\Application\UI\Multiplier(
-			function ($id) : Ytnuk\Blog\Post\Control {
-				$entity = $this->postRepository->getById($id);
-				if ($entity instanceof Ytnuk\Blog\Post\Entity) {
-					return $this->postControl->create($entity);
-				}
-
-				return NULL;
+		return new Nette\Application\UI\Multiplier(function ($id) : Ytnuk\Blog\Post\Control {
+			$entity = $this->postRepository->getById($id);
+			if ($entity instanceof Ytnuk\Blog\Post\Entity) {
+				return $this->postControl->create($entity);
 			}
-		);
+
+			return NULL;
+		});
 	}
 }

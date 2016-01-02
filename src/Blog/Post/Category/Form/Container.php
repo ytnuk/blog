@@ -16,16 +16,10 @@ final class Container
 			switch ($metadata->name) {
 				case 'post':
 				case 'category':
-					$component->setOption(
-						'unique',
-						TRUE
-					);
+					$component->setOption('unique', TRUE);
 					break;
 				case 'primary':
-					$component->setOption(
-						'unique',
-						'post'
-					);
+					$component->setOption('unique', 'post');
 					break;
 			}
 		}
